@@ -4,6 +4,7 @@ const { Routes } = require('discord-api-types/v9');
 const { Client, Intents } = require('discord.js');
 const { token } = require('./config.json');
 const fs = require('fs');
+const consolere = require('console-remote-client');
 
 // Create a new client instance
 const client = new Client({
@@ -17,6 +18,15 @@ const client = new Client({
 	}],
 	},
   });
+
+  consolere.connect({
+	server: 'https://console.re', // optional, default: https://console.re
+	channel: 'FORTUNA-SERVER', // required
+	redirectDefaultConsoleToRemote: true, // optional, default: false
+	disableDefaultConsoleOutput: false, // optional, default: false
+  });
+
+  console.re.log('remote log test');
 
 // When the client is ready, run this code (only once)
 client.once('ready', () => {
