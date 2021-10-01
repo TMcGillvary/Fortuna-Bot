@@ -2,6 +2,7 @@
 *.env
 config.json
 .vscode/
+eslintrc.json
 
 # Logs
 logs
