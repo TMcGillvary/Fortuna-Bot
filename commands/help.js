@@ -14,10 +14,10 @@ module.exports = {
                     .setColor('#3f979e')
                     .setTitle('Help with Commands')
                     .setDescription(`Our current list of commands:
-                    \n\n \`/help\` - shows this list 
-                    \n\n \`/coin\` - flips a coin and tells you heads or tails 
-                    \n\n \`/choose\` - given two or more choices, picks one. Make sure you separate with the | symbol and a space to either side
-                    \n\n \`/roll\` - rolls a dice and tells you the outcome `)
+                    \n \`/help\` - shows this list 
+                    \n \`/coin\` - flips a coin and tells you heads or tails 
+                    \n \`/choose\` - given two or more choices, picks one. Make sure you separate with the | symbol and a space to either side
+                    \n \`/dice\` - rolls a dice and tells you the outcome. You pick how many dice to roll and the number of sides `)
                     .setThumbnail('https://cdn.discordapp.com/attachments/891755416097275916/891901358226157628/LadyFortuna-WM.png')
                     ;
 
