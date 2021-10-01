@@ -6,14 +6,22 @@ const { token } = require('./config.json');
 const fs = require('fs');
 
 // Create a new client instance
-const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
+const client = new Client({
+	/* Your other options like intents */
+	intents: [Intents.FLAGS.GUILDS],
+
+	presence: {
+		activities: [{
+		type: 3,
+		name: '/help for info',
+	}],
+	},
+  });
 
 // When the client is ready, run this code (only once)
 client.once('ready', () => {
 	console.log('Ready! Bot online!');
 });
-
-client.user.setActivity('/help for info', { type: 'WATCHING' });
 
 // Login to Discord with your client's token
 client.login(token);
@@ -41,7 +49,8 @@ const rest = new REST({ version: '9' }).setToken(token);
 		);
 
 		console.log('Successfully reloaded application (/) commands.');
-	} catch (error) {
+	}
+	catch (error) {
 		console.error(error);
 	}
 })();
