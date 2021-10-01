@@ -1,7 +1,9 @@
 // Require the necessary discord.js classes
-const fs = require('fs');
-const { Client, Collection, Intents } = require('discord.js');
+const { REST } = require('@discordjs/rest');
+const { Routes } = require('discord-api-types/v9');
+const { Client, Intents } = require('discord.js');
 const { token } = require('./config.json');
+const fs = require('fs');
 
 // Create a new client instance
 const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
@@ -11,32 +13,33 @@ client.once('ready', () => {
 	console.log('Ready!');
 });
 
-// Creating Interactions
-client.commands = new Collection();
+// Login to Discord with your client's token
+client.login(token);
+
+const commands = [];
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
+
+// Place your client and guild ids here
+const clientId = '891766698015875112';
 
 for (const file of commandFiles) {
 	const command = require(`./commands/${file}`);
-	// Set a new item in the Collection
-	// With the key as the command name and the value as the exported module
-	client.commands.set(command.data.name, command);
+	commands.push(command.data.toJSON());
 }
 
-client.on('interactionCreate', async interaction => {
-	if (!interaction.isCommand()) return;
+const rest = new REST({ version: '9' }).setToken(token);
 
-	const command = client.commands.get(interaction.commandName);
-
-	if (!command) return;
-
+(async () => {
 	try {
-		await command.execute(interaction);
-	}
-	catch (error) {
-		console.error(error);
-		await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
-	}
-});
+		console.log('Started refreshing application (/) commands.');
 
-// Login to Discord with your client's token
-client.login(token);
+		await rest.put(
+			Routes.applicationCommands(clientId),
+			{ body: commands },
+		);
+
+		console.log('Successfully reloaded application (/) commands.');
+	} catch (error) {
+		console.error(error);
+	}
+})();
