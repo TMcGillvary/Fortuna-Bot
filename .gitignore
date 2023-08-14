@@ -1,6 +1,4 @@
 # User-Specific Files
-*.env
-config.json
 .vscode/
 eslintrc.json
 
