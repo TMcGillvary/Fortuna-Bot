@@ -1,22 +1,29 @@
 {
-  "name": "discord-bot-1",
-  "version": "1.0.0",
-  "description": "First attempt at creating a discord bot",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Luna Mora",
-  "license": "ISC",
-  "dependencies": {
-    "@discordjs/builders": "^0.6.0",
-    "@discordjs/rest": "^0.1.0-canary.0",
-    "discord-api-types": "^0.23.1",
-    "discord.js": "^13.1.0",
-    "dotenv": "^10.0.0",
-    "rpg-dice-roller": "^5.0.0"
-  },
-  "devDependencies": {
-    "eslint": "^7.32.0"
-  }
+	"name": "fortuna-bot",
+	"version": "2.0.0",
+	"description": "Fortuna Bot release 2",
+	"scripts": {
+		"build": "tsc --build --verbose",
+		"build:check": "tsc --noEmit --incremental false",
+		"build:dev": "npx ts-node src/deploy-dev-commands.ts",
+		"build:global": "npx ts-node src/deploy-global-commands.ts",
+		"start": "npx ts-node src/index.ts",
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"lint": "eslint src --ext .ts",
+		"lint:fix": "eslint src --ext .ts --fix",
+		"prettier": "prettier --write ."
+	},
+	"dependencies": {
+		"discord-api-types": "^0.37.53",
+		"discord.js": "^14.12.1",
+		"dotenv": "^16.3.1",
+		"ts-node": "^10.9.1"
+	},
+	"devDependencies": {
+		"@types/node": "^20.5.0",
+		"eslint": "^8.47.0",
+		"prettier": "^3.0.1",
+		"tsconfig-paths": "^4.2.0",
+		"typescript": "^5.1.6"
+	}
 }
