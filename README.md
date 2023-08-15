@@ -10,9 +10,9 @@ Built in Typescript using the [discord.js](https://discord.js.org/) library.
 
 `/coin` - Flips a coin
 
-`choose` - Given a list by the user, outputs a random choice
+`/choose` - Given a list by the user, outputs a random choice
 
-`dice` - Given a number of dice and sides, outputs the result of the dice roll
+`/dice` - Given a number of dice and sides, outputs the result of the dice roll
 
 ## To Run
 
